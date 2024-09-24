@@ -5,30 +5,29 @@ import '../../../presentation/pages/login_page.dart';
 import '../../../presentation/pages/note_details.dart';
 import '../../../presentation/pages/signup_page.dart';
 import '../../../presentation/pages/splash_page.dart';
+import 'route_name.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(routes: [
     GoRoute(
-      path: "/",
+      path: RouteName.kRoot,
       builder: (context, state) => const SplashScreen(),
-      routes: [
-        GoRoute(
-          path: "home",
-          builder: (context, state) => const Dashboard(),
-        ),
-        GoRoute(
-          path: "details",
-          builder: (context, state) => const NoteDetails(),
-        ),
-        GoRoute(
-          path: "auth/login",
-          builder: (context, state) => const LoginPage(),
-        ),
-        GoRoute(
-          path: "auth/signup",
-          builder: (context, state) => const SignupPage(),
-        ),
-      ],
+    ),
+    GoRoute(
+      path: RouteName.kHome,
+      builder: (context, state) => const Dashboard(),
+    ),
+    GoRoute(
+      path: RouteName.kDetails,
+      builder: (context, state) => const NoteDetails(),
+    ),
+    GoRoute(
+      path: RouteName.kLogin,
+      builder: (context, state) => const LoginPage(),
+    ),
+    GoRoute(
+      path: RouteName.kSignup,
+      builder: (context, state) => const SignupPage(),
     ),
   ]);
 }

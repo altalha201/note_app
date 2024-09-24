@@ -5,12 +5,11 @@ class User {
   final String email;
   final String name;
   final GenderEnum gender;
-  final List<String> notes;
 
-  User(
-      {required this.id,
-      required this.email,
-      required this.name,
-      required this.gender,
-      required this.notes});
+  User({
+    required this.id,
+    required this.email,
+    required this.name,
+    required this.gender,
+  });
 }
