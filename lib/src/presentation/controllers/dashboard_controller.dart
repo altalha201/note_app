@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'package:note_app/src/presentation/controllers/session_controller.dart';
 
 import '../../core/enums/gender_enum.dart';
 import '../../core/error/app_errors.dart';
@@ -16,7 +19,6 @@ import '../../domain/use_cases/get_user_from_pref_use_case.dart';
 import '../../domain/use_cases/get_user_use_case.dart';
 import '../../domain/use_cases/remove_user_from_pref_use_case.dart';
 import '../../domain/use_cases/save_user_to_pref_use_case.dart';
-import 'auth_controller.dart';
 
 class DashboardController extends GetxController {
   final CheckLoginUseCase _checkLoginUseCase;
@@ -33,6 +35,7 @@ class DashboardController extends GetxController {
     email: "example@mail.com",
     name: "User name",
     gender: GenderEnum.other,
+    password: "",
   );
   List<Note> _notes = [];
 
@@ -42,7 +45,7 @@ class DashboardController extends GetxController {
       required GetUserUseCase getUserUseCase,
       required SaveUserToPrefUseCase saveUserToPrefUseCase,
       required RemoveUserFromPrefUseCase removeUserFromPrefUseCase,
-      required GetNotesUseCase getNotesUseCase})
+      required GetNotesUseCase getNotesUseCase,})
       : _checkLoginUseCase = checkLoginUseCase,
         _getUserFromPrefUseCase = getUserFromPrefUseCase,
         _getUserUseCase = getUserUseCase,
@@ -59,11 +62,15 @@ class DashboardController extends GetxController {
   Future<void> getDashboardData(BuildContext context) async {
     _updateLoading(true);
     try {
-      if (await _checkLoginUseCase.execute(NoParams())) {
+      var isLog = await _checkLoginUseCase.execute(NoParams());
+      log(isLog.toString());
+      if (isLog) {
         final user = await _getUserFromPrefUseCase.execute(NoParams());
+        log(user?.name ?? "No User");
         _updateUser(user);
       } else {
-        final userId = Get.find<AuthController>().currentUserId;
+        final userId = Get.find<SessionController>().currentUserId;
+        log(userId);
         final user =
             await _getUserUseCase.execute(GetUserParams(userId: userId));
         await _saveUserToPrefUseCase.execute(UserSaveTOPrefParams(user));
@@ -85,6 +92,8 @@ class DashboardController extends GetxController {
       if (context.mounted) {
         UiUtils.showSnackBarMess(context, e.message.toString());
       }
+    } catch (e) {
+      debugPrint(e.toString());
     }
     _updateLoading(false);
   }
@@ -101,6 +110,7 @@ class DashboardController extends GetxController {
   Future<void> logoutUser(BuildContext context) async {
     try {
       await _removeUserFromPrefUseCase.execute(NoParams());
+      Get.find<SessionController>().updateUserId("");
       if (context.mounted) {
         UiUtils.showSnackBarMess(
           context,

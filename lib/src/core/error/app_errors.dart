@@ -22,3 +22,7 @@ class CloudStoreError extends AppErrors {
   CloudStoreError(String message)
       : super(message: message, prefix: "Cloud Store Error");
 }
+
+class UserError extends AppErrors {
+  UserError(String message) : super(message: message, prefix: "User Error");
+}

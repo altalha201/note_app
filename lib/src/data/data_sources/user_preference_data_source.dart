@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:note_app/src/core/error/app_errors.dart';
+import 'package:note_app/src/data/model/user_model.dart';
 
 import '../../domain/entities/user.dart';
 
@@ -9,9 +10,9 @@ class UserPreferenceDataSource {
 
   static const String _kUserKey = "note_pad_ex_user";
 
-  Future<void> saveUser(User user) async {
+  Future<void> saveUser(UserModel user) async {
     try {
-      await _storage.write(_kUserKey, user);
+      await _storage.write(_kUserKey, user.toJson());
     } catch (e) {
       throw PrefError(e.toString());
     }
@@ -19,7 +20,8 @@ class UserPreferenceDataSource {
 
   User? getUser() {
     try {
-      return _storage.read(_kUserKey);
+      UserModel user = UserModel.fromJson(_storage.read(_kUserKey));
+      return user;
     } catch (e) {
       throw PrefError(e.toString());
     }

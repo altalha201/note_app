@@ -50,4 +50,7 @@ enum GenderEnum {
         return GenderEnum.other;
     }
   }
+
+  @override
+  String toString() => name;
 }

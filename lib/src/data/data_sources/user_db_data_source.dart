@@ -15,6 +15,7 @@ class UserDbDataSource {
         email: user.email,
         name: user.name,
         gender: user.gender,
+        password: user.password,
       );
       await _reference.doc(user.id).set(model.toJson());
     } catch (e) {

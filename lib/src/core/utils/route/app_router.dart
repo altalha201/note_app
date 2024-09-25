@@ -19,7 +19,13 @@ class AppRouter {
     ),
     GoRoute(
       path: RouteName.kDetails,
-      builder: (context, state) => const NoteDetails(),
+      builder: (context, state) {
+        var extras = state.extra as Map<String, dynamic>?;
+        if (extras?["for_edit"] ?? false) {
+          return NoteDetails(id: extras?["id"], forEdit: true,);
+        }
+        return const NoteDetails();
+      },
     ),
     GoRoute(
       path: RouteName.kLogin,

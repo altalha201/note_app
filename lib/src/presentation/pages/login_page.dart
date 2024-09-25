@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/utils/route/route_name.dart';
 import '../../core/utils/theme/app_colors.dart';
 import '../../core/utils/ui_utils/validators.dart';
-import '../controllers/auth_controller.dart';
+import '../controllers/login_controller.dart';
 import '../widgets/auth_background.dart';
 import '../widgets/auth_input_field.dart';
 
@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                     validator: Validators.passwordValidator,
                   ),
                   const SizedBox(height: 30.0),
-                  GetBuilder<AuthController>(builder: (controller) {
+                  GetBuilder<LoginController>(builder: (controller) {
                     return ElevatedButton(
                       onPressed: () {
                         if (!controller.isLoading && (_loginValidationKey.currentState?.validate() ?? false)) {

@@ -1,7 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
-import 'package:note_app/src/presentation/controllers/auth_controller.dart';
+import 'package:note_app/src/presentation/controllers/signup_controller.dart';
 
 import '../../core/enums/gender_enum.dart';
 import '../../core/utils/route/route_name.dart';
@@ -146,12 +148,14 @@ class _SignupPageState extends State<SignupPage> {
                     },
                   ),
                   const SizedBox(height: 30.0),
-                  GetBuilder<AuthController>(builder: (controller) {
+                  GetBuilder<SignupController>(builder: (controller) {
                     return ElevatedButton(
                       onPressed: () {
+                        log("Signup Pressed");
                         if (!controller.isLoading &&
                             (_signUpFormKey.currentState?.validate() ??
                                 false)) {
+                          log("Validate Conditions");
                           controller.signup(
                             context,
                             _nameETController.text,

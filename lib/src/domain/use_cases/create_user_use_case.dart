@@ -12,7 +12,13 @@ class CreateUserUseCase implements UseCase<void, UserCreateParams> {
   @override
   Future<void> execute(UserCreateParams params) {
     try {
-      final User user = User(id: params.id, email: params.email, name: params.name, gender: params.gender);
+      final User user = User(
+        id: params.id,
+        email: params.email,
+        name: params.name,
+        gender: params.gender,
+        password: params.password,
+      );
       return _repository.createUser(user);
     } catch (e) {
       rethrow;
@@ -21,12 +27,14 @@ class CreateUserUseCase implements UseCase<void, UserCreateParams> {
 }
 
 class UserCreateParams {
-  final String name, email, id;
+  final String name, email, id, password;
   final GenderEnum gender;
 
-  UserCreateParams(
-      {required this.name,
-      required this.email,
-      required this.id,
-      required this.gender});
+  UserCreateParams({
+    required this.name,
+    required this.email,
+    required this.id,
+    required this.password,
+    required this.gender,
+  });
 }
