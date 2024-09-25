@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/utils/route/route_name.dart';
 import '../../core/utils/theme/app_colors.dart';
+import '../../core/utils/ui_utils/validators.dart';
+import '../controllers/auth_controller.dart';
 import '../widgets/auth_background.dart';
 import '../widgets/auth_input_field.dart';
 
@@ -70,40 +73,37 @@ class _LoginPageState extends State<LoginPage> {
                     iconData: Icons.alternate_email_outlined,
                     controller: _emailETController,
                     inputType: TextInputType.emailAddress,
-                    validator: (value) {
-                      if (value?.isEmpty ?? true) {
-                        return "Enter Email";
-                      }
-                      if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
-                          .hasMatch(value ?? "")) {
-                        return "Enter a valid Email";
-                      }
-                      return null;
-                    },
+                    validator: Validators.emailValidator,
                   ),
                   const SizedBox(height: 20.0),
                   AuthInputField(
                     hint: "Password",
                     iconData: Icons.lock_outline,
+                    obscureText: true,
                     controller: _passwordETController,
-                    validator: (value) {
-                      if (value?.isEmpty ?? true) {
-                        return "Enter Password";
-                      }
-                      if (value!.length < 6) {
-                        return "Password must be 6 character or more";
-                      }
-                      return null;
-                    },
+                    validator: Validators.passwordValidator,
                   ),
                   const SizedBox(height: 30.0),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Login',
-                      style: TextStyle(color: AppColors.blue),
-                    ),
-                  ),
+                  GetBuilder<AuthController>(builder: (controller) {
+                    return ElevatedButton(
+                      onPressed: () {
+                        if (!controller.isLoading && (_loginValidationKey.currentState?.validate() ?? false)) {
+                          controller.login(context, _emailETController.text.trim(), _passwordETController.text);
+                        }
+                      },
+                      child: Visibility(
+                        visible: !controller.isLoading,
+                        replacement: const SizedBox.square(
+                          dimension: 28,
+                          child: CircularProgressIndicator(),
+                        ),
+                        child: const Text(
+                          'Login',
+                          style: TextStyle(color: AppColors.blue),
+                        ),
+                      ),
+                    );
+                  }),
                   const SizedBox(height: 20.0),
                   TextButton(
                     onPressed: () {

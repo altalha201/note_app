@@ -3,14 +3,14 @@ import '../entities/user.dart';
 import '../repositories/user_pref_repository.dart';
 
 class SaveUserToPrefUseCase extends UseCase<void, UserSaveTOPrefParams> {
-  final UserPrefRepository repository;
+  final UserPrefRepository _repository;
 
-  SaveUserToPrefUseCase(this.repository);
+  SaveUserToPrefUseCase(this._repository);
 
   @override
   Future<void> execute(UserSaveTOPrefParams params) {
     try {
-      return repository.removeUserFromRepository();
+      return _repository.removeUserFromRepository();
     } catch (e) {
       rethrow;
     }

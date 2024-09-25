@@ -3,14 +3,14 @@ import '../../domain/repositories/user_pref_repository.dart';
 import '../data_sources/user_preference_data_source.dart';
 
 class UserPrefRepositoryImpl implements UserPrefRepository {
-  final UserPreferenceDataSource preferenceDataSource;
+  final UserPreferenceDataSource _preferenceDataSource;
 
-  UserPrefRepositoryImpl(this.preferenceDataSource);
+  UserPrefRepositoryImpl(this._preferenceDataSource);
 
   @override
   bool checkUserLoggedIn() {
     try {
-      return preferenceDataSource.isUserLoggedIn();
+      return _preferenceDataSource.isUserLoggedIn();
     } catch (e) {
       rethrow;
     }
@@ -19,7 +19,7 @@ class UserPrefRepositoryImpl implements UserPrefRepository {
   @override
   User? getUserFromPreference() {
     try {
-      return preferenceDataSource.getUser();
+      return _preferenceDataSource.getUser();
     } catch (e) {
       rethrow;
     }
@@ -28,7 +28,7 @@ class UserPrefRepositoryImpl implements UserPrefRepository {
   @override
   Future<void> removeUserFromRepository() {
     try {
-      return preferenceDataSource.logoutUser();
+      return _preferenceDataSource.logoutUser();
     } catch (e) {
       rethrow;
     }
@@ -37,7 +37,7 @@ class UserPrefRepositoryImpl implements UserPrefRepository {
   @override
   Future<void> saveUserToPreference(User user) {
     try {
-      return preferenceDataSource.saveUser(user);
+      return _preferenceDataSource.saveUser(user);
     } catch (e) {
       rethrow;
     }

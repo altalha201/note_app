@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import '../utils/constants/images.dart';
 
 enum GenderEnum {
@@ -24,6 +26,17 @@ enum GenderEnum {
         return Images.kFemaleImage;
       case GenderEnum.other:
         return Images.kDefaultUser;
+    }
+  }
+
+  IconData getIcon() {
+    switch(this) {
+      case GenderEnum.male:
+        return Icons.male;
+      case GenderEnum.female:
+        return Icons.female;
+      case GenderEnum.other:
+        return Icons.no_accounts;
     }
   }
 

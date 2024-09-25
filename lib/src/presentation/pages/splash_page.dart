@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../core/utils/constants/images.dart';
+import '../../core/utils/theme/app_colors.dart';
 import '../controllers/session_controller.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -58,7 +59,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.darkGray,
       body: Center(
         child: AnimatedBuilder(
           animation: _controller,

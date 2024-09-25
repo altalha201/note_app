@@ -3,14 +3,14 @@ import '../entities/user.dart';
 import '../repositories/user_pref_repository.dart';
 
 class GetUserFromPrefUseCase implements UseCase<User?, NoParams> {
-  final UserPrefRepository repository;
+  final UserPrefRepository _repository;
 
-  GetUserFromPrefUseCase(this.repository);
+  GetUserFromPrefUseCase(this._repository);
 
   @override
   Future<User?> execute(NoParams params) {
     try {
-      return Future.value(repository.getUserFromPreference());
+      return Future.value(_repository.getUserFromPreference());
     } catch (e) {
       rethrow;
     }
