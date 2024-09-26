@@ -1,6 +1,5 @@
-import 'package:note_app/src/core/utils/hash/hash.dart';
-
 import '../../core/enums/gender_enum.dart';
+import '../../core/utils/hash/hash.dart';
 import '../../domain/entities/user.dart';
 
 class UserModel extends User {

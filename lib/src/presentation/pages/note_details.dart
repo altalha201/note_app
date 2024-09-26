@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
-import 'package:note_app/src/core/utils/route/route_name.dart';
-import 'package:note_app/src/core/utils/theme/app_colors.dart';
-import 'package:note_app/src/presentation/controllers/note_controller.dart';
 
+import '../../core/utils/route/route_name.dart';
+import '../../core/utils/theme/app_colors.dart';
+import '../controllers/note_controller.dart';
 import '../widgets/note_input_field.dart';
 
 class NoteDetails extends StatefulWidget {

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
-import 'package:note_app/src/core/utils/route/route_name.dart';
-import 'package:note_app/src/core/utils/theme/app_colors.dart';
-import 'package:note_app/src/presentation/controllers/dashboard_controller.dart';
-import 'package:note_app/src/presentation/widgets/user_details_header.dart';
 
+import '../../core/utils/route/route_name.dart';
+import '../../core/utils/theme/app_colors.dart';
+import '../controllers/dashboard_controller.dart';
 import '../widgets/note_item.dart';
+import '../widgets/user_details_header.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -32,7 +32,10 @@ class _DashboardState extends State<Dashboard> {
         child: GetBuilder<DashboardController>(builder: (controller) {
           if (controller.notes.isEmpty) {
             return const Center(
-              child: Text("Add Note"),
+              child: Text(
+                "Add Note",
+                style: TextStyle(color: AppColors.white),
+              ),
             );
           }
           return ListView.builder(

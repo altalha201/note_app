@@ -1,9 +1,8 @@
-import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:note_app/src/core/error/app_errors.dart';
-import 'package:note_app/src/data/model/user_model.dart';
 
+import '../../core/error/app_errors.dart';
 import '../../domain/entities/user.dart';
+import '../model/user_model.dart';
 
 class UserPreferenceDataSource {
   final GetStorage _storage = GetStorage();

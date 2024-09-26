@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:note_app/src/core/utils/bindings/note_controller_binding.dart';
 
 import 'dashboard_controller_binding.dart';
 import 'login_controller_binding.dart';
+import 'note_controller_binding.dart';
 import 'signup_controller_binding.dart';
 import 'session_controller_binding.dart';
 

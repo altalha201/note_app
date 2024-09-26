@@ -1,8 +1,7 @@
-import 'package:note_app/src/data/model/user_model.dart';
-
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/user_pref_repository.dart';
 import '../data_sources/user_preference_data_source.dart';
+import '../model/user_model.dart';
 
 class UserPrefRepositoryImpl implements UserPrefRepository {
   final UserPreferenceDataSource _preferenceDataSource;

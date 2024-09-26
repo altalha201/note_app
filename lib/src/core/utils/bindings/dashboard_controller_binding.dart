@@ -1,17 +1,16 @@
-import 'package:note_app/src/data/data_sources/note_data_source.dart';
-import 'package:note_app/src/data/data_sources/user_db_data_source.dart';
-import 'package:note_app/src/data/data_sources/user_preference_data_source.dart';
-import 'package:note_app/src/data/repositories/note_db_repository_impl.dart';
-import 'package:note_app/src/data/repositories/user_db_data_repository_impl.dart';
-import 'package:note_app/src/data/repositories/user_pref_repository_impl.dart';
-import 'package:note_app/src/domain/repositories/note_db_repository.dart';
-import 'package:note_app/src/domain/use_cases/check_login_use_case.dart';
-import 'package:note_app/src/domain/use_cases/get_notes_use_case.dart';
-import 'package:note_app/src/domain/use_cases/get_user_from_pref_use_case.dart';
-import 'package:note_app/src/domain/use_cases/get_user_use_case.dart';
-import 'package:note_app/src/domain/use_cases/remove_user_from_pref_use_case.dart';
-import 'package:note_app/src/domain/use_cases/save_user_to_pref_use_case.dart';
-import 'package:note_app/src/presentation/controllers/dashboard_controller.dart';
+import '../../../data/data_sources/note_data_source.dart';
+import '../../../data/data_sources/user_db_data_source.dart';
+import '../../../data/data_sources/user_preference_data_source.dart';
+import '../../../data/repositories/note_db_repository_impl.dart';
+import '../../../data/repositories/user_db_data_repository_impl.dart';
+import '../../../data/repositories/user_pref_repository_impl.dart';
+import '../../../domain/use_cases/check_login_use_case.dart';
+import '../../../domain/use_cases/get_notes_use_case.dart';
+import '../../../domain/use_cases/get_user_from_pref_use_case.dart';
+import '../../../domain/use_cases/get_user_use_case.dart';
+import '../../../domain/use_cases/remove_user_from_pref_use_case.dart';
+import '../../../domain/use_cases/save_user_to_pref_use_case.dart';
+import '../../../presentation/controllers/dashboard_controller.dart';
 
 class DashboardControllerBinding {
   static final DashboardController init = DashboardController(

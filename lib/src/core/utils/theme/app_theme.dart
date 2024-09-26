@@ -19,6 +19,9 @@ class AppTheme {
         ),
       ),
     ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: AppColors.darkBlue,
+    )
   );
 
   static const ThemeMode kMode = ThemeMode.dark;

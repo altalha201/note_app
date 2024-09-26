@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/src/core/utils/theme/app_colors.dart';
+
+import '../theme/app_colors.dart';
 
 class UiUtils {
   static void showSnackBarMess(

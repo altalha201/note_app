@@ -3,12 +3,12 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
-import 'package:note_app/src/presentation/controllers/signup_controller.dart';
 
 import '../../core/enums/gender_enum.dart';
 import '../../core/utils/route/route_name.dart';
 import '../../core/utils/theme/app_colors.dart';
 import '../../core/utils/ui_utils/validators.dart';
+import '../controllers/signup_controller.dart';
 import '../widgets/auth_background.dart';
 import '../widgets/auth_input_field.dart';
 

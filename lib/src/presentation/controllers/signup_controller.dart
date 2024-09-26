@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
-import 'package:note_app/src/presentation/controllers/session_controller.dart';
 
 import '../../core/enums/gender_enum.dart';
 import '../../core/error/app_errors.dart';
@@ -14,6 +13,7 @@ import '../../domain/entities/user.dart';
 import '../../domain/use_cases/create_user_use_case.dart';
 import '../../domain/use_cases/save_user_to_pref_use_case.dart';
 import '../../domain/use_cases/signup_use_case.dart';
+import 'session_controller.dart';
 
 class SignupController extends GetxController {
   final SignupUseCase _signupUseCase;

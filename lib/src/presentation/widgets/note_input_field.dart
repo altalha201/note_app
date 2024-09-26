@@ -31,6 +31,7 @@ class NoteInputField extends StatelessWidget {
         ),
       ),
       keyboardType: TextInputType.multiline,
+      maxLines: null,
     );
   }
 }

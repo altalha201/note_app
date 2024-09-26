@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
-import 'package:note_app/src/core/utils/route/route_name.dart';
-import 'package:note_app/src/core/utils/ui_utils/ui_utils.dart';
-import 'package:note_app/src/domain/entities/note.dart';
-import 'package:note_app/src/domain/use_cases/delete_note_use_case.dart';
-import 'package:note_app/src/domain/use_cases/insert_note_use_case.dart';
-import 'package:note_app/src/domain/use_cases/update_note_use_case.dart';
-import 'package:note_app/src/presentation/controllers/session_controller.dart';
+
+import '../../core/utils/route/route_name.dart';
+import '../../core/utils/ui_utils/ui_utils.dart';
+import '../../domain/entities/note.dart';
+import '../../domain/use_cases/delete_note_use_case.dart';
+import '../../domain/use_cases/insert_note_use_case.dart';
+import '../../domain/use_cases/update_note_use_case.dart';
+import 'session_controller.dart';
 
 class NoteController extends GetxController {
   final InsertNoteUseCase _insertNoteUseCase;
